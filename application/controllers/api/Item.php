@@ -45,7 +45,7 @@ public function index_delete()
     if ($id === null) {
         $this->response([
             'status' => false,
-            'message' => 'provide an brgbarcode'
+            'message' => 'provide an Item_id'
         ], REST_Controller::HTTP_BAD_REQUEST);
     } else {
         if ($this->p_item->deleteItem($id) > 0) {
@@ -86,7 +86,7 @@ public function index_post()
 
 
     
-    if ($this->barang->createItem($data) > 0) {
+    if ($this->p_item->createItem($data) > 0) {
         $this->response([
             'status' => true,
             'message' => 'new item has been created'
@@ -120,7 +120,7 @@ public function index_put()
         'created' => $this->post('created'),
         'updated' => $this->post('updated'),
     ];
-    if ($this->barang->updateItem($data, $id) > 0) {
+    if ($this->p_item->updateItem($data, $id) > 0) {
         $this->response([
             'status' => true,
             'message' => 'new item has been updated'
